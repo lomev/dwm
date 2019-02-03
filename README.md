@@ -1,7 +1,7 @@
 ## Added patches
 - attachaside
 - hide_vacant_tags
-- moveresize
+- ~~moveresize~~ (doesn't seem to work)
 - movestack
 - pertag
 - scratchpad
