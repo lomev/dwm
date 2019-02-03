@@ -12,14 +12,14 @@
 Droid fonts
 
 On Void Linux
-'''
+```bash
 sudo xbps-install fonts-droid-ttf
-'''
+```
 
 On Arch Linux
-'''
+```bash
 sudo pacman -S ttf-droid
-'''
+```
 
 You should probably use my (though it's not necessery)
 - [dotfiles](https://github.com/reiffarth/dotfiles)
