@@ -19,6 +19,6 @@ sudo xbps-install fonts-droid-ttf
 sudo pacman -S ttf-droid
 ```
 
-### You should probably use (though it's not necessery)
+### To be used with (though it's not necessery)
 - [my dotfiles](https://github.com/reiffarth/dotfiles)
 - [my st build](https://github.com/reiffarth/st)
