@@ -6,6 +6,7 @@
 - pertag
 - scratchpad
 - uselessgap
+- statuscolors
 
 ## Requirements
 ### Droid fonts
