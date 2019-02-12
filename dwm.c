@@ -198,6 +198,7 @@ static void resizeclient(Client *c, int x, int y, int w, int h);
 static void resizemouse(const Arg *arg);
 static void restack(Monitor *m);
 static void run(void);
+static void runorraise(const Arg *arg);
 static void scan(void);
 static int sendevent(Client *c, Atom proto);
 static void sendmon(Client *c, Monitor *m);
@@ -1481,6 +1482,30 @@ run(void)
 	while (running && !XNextEvent(dpy, &ev))
 		if (handler[ev.type])
 			handler[ev.type](&ev); /* call handler */
+}
+
+void
+runorraise(const Arg *arg)
+{
+	char *app = ((char **)arg->v)[4];
+	Arg a = { .ui = ~0 };
+	Monitor *mon;
+	Client *c;
+	XClassHint hint = { NULL, NULL };
+	/* Tries to find the client */
+	for (mon = mons; mon; mon = mon->next) {
+		for (c = mon->clients; c; c = c->next) {
+			XGetClassHint(dpy, c->win, &hint);
+			if (hint.res_class && strcmp(app, hint.res_class) == 0) {
+				a.ui = c->tags;
+				view(&a);
+				focus(c);
+				XRaiseWindow(dpy, c->win);
+				return;
+			}
+		}
+	}
+	spawn(arg);
 }
 
 void

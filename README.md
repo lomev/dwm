@@ -7,6 +7,7 @@
 - scratchpad
 - uselessgap
 - statuscolors
+- runorraise
 
 ## Requirements
 ### Droid fonts

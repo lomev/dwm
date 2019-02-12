@@ -1,19 +1,19 @@
 /* See LICENSE f/le for copyright and license details. */
 
 /* appearance */
-static const unsigned int borderpx  = 2;        /* border pixel of windows */
+static const unsigned int borderpx  = 1;        /* border pixel of windows */
 static const unsigned int snap      = 16;       /* snap pixel */
-static const unsigned int gappx     = 5;
+static const unsigned int gappx     = 8;
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
 static const char *fonts[]          = { "Droid Sans Mono:size=9" };
 
 static const char *colors[][3]      = {
-	/*                 fg         bg         border   */
-	[SchemeNorm]   = { "#aaaaaa", "#050505", "#707070" },
-	[SchemeSel]    = { "#ffffff", "#050505", "#dddddd" },
-	[SchemeWarn]   = { "#fa2020", "#050505", "#707070" },
-	[SchemeUrgent] = { "#fb6464", "#050505", "#707070" },
+	/* fg         bg         border  */
+	{ "#aaaaaa", "#0b0b0b", "#707070" }, // normal
+	{ "#ffffff", "#0b0b0b", "#dddddd" }, // selected
+	{ "#fa2020", "#00b0b0", "#707070" }, // urgent
+	{ "#fb6464", "#0b0b0b", "#707070" }, // error
 };
 
 /* tagging */
@@ -58,14 +58,14 @@ static const char scratchpadname[] = "scratchpad";
 static const char *dmenucmd[]       = { "dmenu_run", "-m", dmenumon };
 static const char *termcmd[]        = { "st", NULL };
 static const char *scratchpadcmd[]  = { "st", "-t", scratchpadname, "-g", "60x16", NULL };
-static const char *browser[]        = { "firefox", NULL };
+static const char *browser[]        = { "firefox", NULL, NULL, NULL, "Firefox" };
 
 #include "movestack.c"
 static Key keys[] = {
 	/* modifier                     key        function        argument */
 	{ MODKEY,                       XK_d,      spawn,          {.v = dmenucmd } },
 	{ MODKEY,                       XK_Return, spawn,          {.v = termcmd } },
-	{ MODKEY,                       XK_w,      spawn,          {.v = browser } },
+	{ MODKEY,                       XK_w,      runorraise,     {.v = browser } },
 	{ MODKEY,                       XK_Up,     spawn,          SHCMD("$HOME/.scripts/volume up") },
 	{ MODKEY,                       XK_Down,   spawn,          SHCMD("$HOME/.scripts/volume down") },
 	{ MODKEY,                       XK_s,      togglescratch,  {.v = scratchpadcmd } },
