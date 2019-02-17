@@ -12,8 +12,6 @@ static const char *colors[][3]      = {
 	/* fg         bg         border  */
 	{ "#aaaaaa", "#0b0b0b", "#707070" }, // normal
 	{ "#ffffff", "#0b0b0b", "#dddddd" }, // selected
-	{ "#fa2020", "#00b0b0", "#707070" }, // urgent
-	{ "#fb6464", "#0b0b0b", "#707070" }, // error
 };
 
 /* tagging */

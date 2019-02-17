@@ -1,12 +1,10 @@
 ## Added patches
 - attachaside
 - hide_vacant_tags
-- ~~moveresize~~ (doesn't seem to work)
 - movestack
 - pertag
 - scratchpad
 - uselessgap
-- statuscolors
 - runorraise
 
 ## Requirements
