@@ -6,6 +6,7 @@
 - scratchpad
 - uselessgap
 - runorraise
+- titlecolor
 
 ## Requirements
 ### Droid fonts
