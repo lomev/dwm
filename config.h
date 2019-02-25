@@ -12,6 +12,7 @@ static const char *colors[][3]      = {
 	/* fg         bg         border  */
 	{ "#aaaaaa", "#0b0b0b", "#707070" }, // normal
 	{ "#ffffff", "#0b0b0b", "#dddddd" }, // selected
+	{ "#0b0b0b", "#0b0b0b", "#0b0b0b" }, // title
 };
 
 /* tagging */
@@ -23,7 +24,7 @@ static const Rule rules[] = {
 	 *	WM_NAME(STRING) = title
 	 */
 	/* class      instance    title       tags mask     isfloating   monitor */
-	{ NULL,       NULL,       NULL,       0,            0,           -1 },
+	{ "Firefox",       NULL,       NULL,       0,            0,           -1 },
 };
 
 /* layout(s) */
@@ -107,7 +108,7 @@ static Button buttons[] = {
 	/* click                event mask      button          function        argument */
 	{ ClkLtSymbol,          0,              Button1,        setlayout,      {0} },
 	{ ClkLtSymbol,          0,              Button3,        setlayout,      {.v = &layouts[2]} },
-	{ ClkWinTitle,          0,              Button2,        zoom,           {0} },
+    { ClkWinTitle,          0,              Button2,        zoom,           {0} },
 	{ ClkStatusText,        0,              Button2,        spawn,          {.v = termcmd } },
 	{ ClkClientWin,         MODKEY,         Button1,        movemouse,      {0} },
 	{ ClkClientWin,         MODKEY,         Button2,        togglefloating, {0} },
