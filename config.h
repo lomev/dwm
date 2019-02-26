@@ -24,7 +24,13 @@ static const Rule rules[] = {
 	 *	WM_NAME(STRING) = title
 	 */
 	/* class      instance    title       tags mask     isfloating   monitor */
-	{ "Firefox",       NULL,       NULL,       0,            0,           -1 },
+    { "Firefox",  NULL,       NULL,       0,            0,           -1 },
+    { "feh",      NULL,       NULL,       0,            1,           -1 },
+    { "zathura",  NULL,       NULL,       0,            1,           -1 },
+    { "mpv",      NULL,       NULL,       0,            1,           -1 },
+    { NULL,       NULL,       "vifm",     0,            0,           -1 },
+    { NULL,       NULL,       "tmux",     0,            0,           -1 },
+    { NULL,       NULL,       "irssi",    0,            0,           -1 },
 };
 
 /* layout(s) */
@@ -51,11 +57,17 @@ static const Layout layouts[] = {
 #define SHCMD(cmd) { .v = (const char*[]){ "/bin/sh", "-c", cmd, NULL } }
 
 /* commands */
-static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
+static char dmenumon[2] = "0";
 static const char scratchpadname[] = "scratchpad";
 
-static const char *dmenucmd[]       = { "dmenu_run", "-m", dmenumon };
-static const char *termcmd[]        = { "st", NULL };
+static const char *volup[]   = { "amixer", "-q", "set", "Master", "5%+", "unmute" };
+static const char *voldown[] = { "amixer", "-q", "set", "Master", "5%-", "unmute" };
+static const char *lock[]    = { "slock", NULL };
+
+static const char *dmenucmd[]       = { "dmenu_run", "-m", dmenumon, "-nb", "#0b0b0b", "-nf", "#aaaaaa", "-sb", "#333333", "-sf", "#ffffff" };
+static const char *termcmd[]        = { "st", NULL, "st" };
+static const char *tmuxcmd[]        = { "st", "-e", "tmux", NULL };
+static const char *filemanager[]    = { "st", "-e", "vifm", NULL };
 static const char *scratchpadcmd[]  = { "st", "-t", scratchpadname, "-g", "60x16", NULL };
 static const char *browser[]        = { "firefox", NULL, NULL, NULL, "Firefox" };
 
@@ -64,9 +76,13 @@ static Key keys[] = {
 	/* modifier                     key        function        argument */
 	{ MODKEY,                       XK_d,      spawn,          {.v = dmenucmd } },
 	{ MODKEY,                       XK_Return, spawn,          {.v = termcmd } },
+	{ MODKEY|ShiftMask,             XK_Return, spawn,          {.v = tmuxcmd } },
 	{ MODKEY,                       XK_w,      runorraise,     {.v = browser } },
-	{ MODKEY,                       XK_Up,     spawn,          SHCMD("$HOME/.scripts/volume up") },
-	{ MODKEY,                       XK_Down,   spawn,          SHCMD("$HOME/.scripts/volume down") },
+	{ MODKEY,                       XK_v,      spawn,          {.v = filemanager } },
+	{ MODKEY,                       XK_Up,     spawn,          {.v = volup } },
+	{ MODKEY,                       XK_Down,   spawn,          {.v = voldown } },
+	{ MODKEY,                       XK_x,      spawn,          {.v = lock } },
+	{ MODKEY|ShiftMask,             XK_x,      spawn,          SHCMD("$HOME/.scripts/dmenu_halt") },
 	{ MODKEY,                       XK_s,      togglescratch,  {.v = scratchpadcmd } },
 	{ MODKEY,                       XK_b,      togglebar,      {0} },
 	{ MODKEY,                       XK_j,      focusstack,     {.i = +1 } },
@@ -77,7 +93,7 @@ static Key keys[] = {
 	{ MODKEY,                       XK_l,      setmfact,       {.f = +0.05} },
 	{ MODKEY|ShiftMask,             XK_j,      movestack,      {.i = +1 } },
 	{ MODKEY|ShiftMask,             XK_k,      movestack,      {.i = -1 } },
-	{ MODKEY|ShiftMask,             XK_Return, zoom,           {0} },
+	{ MODKEY,                       XK_slash,  zoom,           {0} },
 	{ MODKEY,                       XK_Tab,    view,           {0} },
 	{ MODKEY,                       XK_q,      killclient,     {0} },
 	{ MODKEY,                       XK_t,      setlayout,      {.v = &layouts[0]} },
