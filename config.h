@@ -31,6 +31,7 @@ static const Rule rules[] = {
     { NULL,       NULL,       "vifm",     0,            0,           -1 },
     { NULL,       NULL,       "tmux",     0,            0,           -1 },
     { NULL,       NULL,       "irssi",    0,            0,           -1 },
+    { NULL,       NULL,       "newsboat", 0,            0,           -1 },
 };
 
 /* layout(s) */
@@ -64,10 +65,12 @@ static const char *volup[]   = { "amixer", "-q", "set", "Master", "5%+", "unmute
 static const char *voldown[] = { "amixer", "-q", "set", "Master", "5%-", "unmute" };
 static const char *lock[]    = { "slock", NULL };
 
-static const char *dmenucmd[]       = { "dmenu_run", "-m", dmenumon, "-nb", "#0b0b0b", "-nf", "#aaaaaa", "-sb", "#333333", "-sf", "#ffffff" };
+static const char *dmenucmd[]       = { "dmenu_run", "-m", dmenumon, "-fn", "Droid Sans Mono:size=9", "-nb", "#0b0b0b", "-nf", "#aaaaaa", "-sb", "#777777", "-sf", "#ffffff" };
 static const char *termcmd[]        = { "st", NULL, "st" };
 static const char *tmuxcmd[]        = { "st", "-e", "tmux", NULL };
+static const char *irssicmd[]       = { "st", "-e", "irssi", NULL };
 static const char *filemanager[]    = { "st", "-e", "vifm", NULL };
+static const char *newsboat[]       = { "st", "-e", "newsboat", NULL };
 static const char *scratchpadcmd[]  = { "st", "-t", scratchpadname, "-g", "60x16", NULL };
 static const char *browser[]        = { "firefox", NULL, NULL, NULL, "Firefox" };
 
@@ -79,6 +82,8 @@ static Key keys[] = {
 	{ MODKEY|ShiftMask,             XK_Return, spawn,          {.v = tmuxcmd } },
 	{ MODKEY,                       XK_w,      runorraise,     {.v = browser } },
 	{ MODKEY,                       XK_v,      spawn,          {.v = filemanager } },
+	{ MODKEY,                       XK_n,      spawn,          {.v = newsboat } },
+	{ MODKEY,                       XK_y,      spawn,          {.v = irssicmd } },
 	{ MODKEY,                       XK_Up,     spawn,          {.v = volup } },
 	{ MODKEY,                       XK_Down,   spawn,          {.v = voldown } },
 	{ MODKEY,                       XK_x,      spawn,          {.v = lock } },
