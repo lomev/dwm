@@ -2,17 +2,18 @@
 
 /* appearance */
 static const unsigned int borderpx  = 1;        /* border pixel of windows */
+static const unsigned int gappx     = 15;          /* gaps between windows */
 static const unsigned int snap      = 16;       /* snap pixel */
-static const unsigned int gappx     = 8;
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
-static const char *fonts[]          = { "Droid Sans Mono:size=9" };
+static const char *fonts[]          = { "DejaVu Sans Mono:size=10" };
 
 static const char *colors[][3]      = {
-	/* fg         bg         border  */
-	{ "#aaaaaa", "#0b0b0b", "#707070" }, // normal
-	{ "#ffffff", "#0b0b0b", "#dddddd" }, // selected
-	{ "#0b0b0b", "#0b0b0b", "#0b0b0b" }, // title
+	/*                  fg         bg         border  */
+	[SchemeNorm]   = { "#bbbbbb", "#0b0b0b", "#707070" },
+	[SchemeSel]    = { "#ff9a00", "#212121", "#dddddd" },
+	[SchemeWarn]   = { "#ff9a00", "#212121", "#dddddd" },
+	[SchemeUrgent] = { "#ff9a00", "#212121", "#dddddd" }
 };
 
 /* tagging */
@@ -35,7 +36,7 @@ static const Rule rules[] = {
 };
 
 /* layout(s) */
-static const float mfact     = 0.50; /* factor of master area size [0.05..0.95] */
+static const float mfact     = 0.55; /* factor of master area size [0.05..0.95] */
 static const int nmaster     = 1;    /* number of clients in master area */
 static const int resizehints = 0;    /* 1 means respect size hints in tiled resizals */
 
@@ -59,7 +60,6 @@ static const Layout layouts[] = {
 
 /* commands */
 static char dmenumon[2] = "0";
-static const char scratchpadname[] = "scratchpad";
 
 static const char *volup[]   = { "amixer", "-q", "set", "Master", "5%+", "unmute" };
 static const char *voldown[] = { "amixer", "-q", "set", "Master", "5%-", "unmute" };
@@ -71,24 +71,22 @@ static const char *tmuxcmd[]        = { "st", "-e", "tmux", NULL };
 static const char *irssicmd[]       = { "st", "-e", "irssi", NULL };
 static const char *filemanager[]    = { "st", "-e", "vifm", NULL };
 static const char *newsboat[]       = { "st", "-e", "newsboat", NULL };
-static const char *scratchpadcmd[]  = { "st", "-t", scratchpadname, "-g", "60x16", NULL };
 static const char *browser[]        = { "firefox", NULL, NULL, NULL, "Firefox" };
 
-#include "movestack.c"
+#include "moveresize.c"
 static Key keys[] = {
 	/* modifier                     key        function        argument */
 	{ MODKEY,                       XK_d,      spawn,          {.v = dmenucmd } },
 	{ MODKEY,                       XK_Return, spawn,          {.v = termcmd } },
 	{ MODKEY|ShiftMask,             XK_Return, spawn,          {.v = tmuxcmd } },
-	{ MODKEY,                       XK_w,      runorraise,     {.v = browser } },
+	{ MODKEY,                       XK_w,      spawn,          {.v = browser } },
 	{ MODKEY,                       XK_v,      spawn,          {.v = filemanager } },
 	{ MODKEY,                       XK_n,      spawn,          {.v = newsboat } },
 	{ MODKEY,                       XK_y,      spawn,          {.v = irssicmd } },
 	{ MODKEY,                       XK_Up,     spawn,          {.v = volup } },
 	{ MODKEY,                       XK_Down,   spawn,          {.v = voldown } },
 	{ MODKEY,                       XK_x,      spawn,          {.v = lock } },
-	{ MODKEY|ShiftMask,             XK_x,      spawn,          SHCMD("$HOME/.scripts/dmenu_halt") },
-	{ MODKEY,                       XK_s,      togglescratch,  {.v = scratchpadcmd } },
+	{ MODKEY|ShiftMask,             XK_x,      spawn,          SHCMD("$HOME/.scripts/dmenu_shut") },
 	{ MODKEY,                       XK_b,      togglebar,      {0} },
 	{ MODKEY,                       XK_j,      focusstack,     {.i = +1 } },
 	{ MODKEY,                       XK_k,      focusstack,     {.i = -1 } },
@@ -96,8 +94,6 @@ static Key keys[] = {
 	{ MODKEY,                       XK_u,      incnmaster,     {.i = -1 } },
 	{ MODKEY,                       XK_h,      setmfact,       {.f = -0.05} },
 	{ MODKEY,                       XK_l,      setmfact,       {.f = +0.05} },
-	{ MODKEY|ShiftMask,             XK_j,      movestack,      {.i = +1 } },
-	{ MODKEY|ShiftMask,             XK_k,      movestack,      {.i = -1 } },
 	{ MODKEY,                       XK_slash,  zoom,           {0} },
 	{ MODKEY,                       XK_Tab,    view,           {0} },
 	{ MODKEY,                       XK_q,      killclient,     {0} },
@@ -111,6 +107,9 @@ static Key keys[] = {
 	{ MODKEY,                       XK_period, focusmon,       {.i = +1 } },
 	{ MODKEY|ShiftMask,             XK_comma,  tagmon,         {.i = -1 } },
 	{ MODKEY|ShiftMask,             XK_period, tagmon,         {.i = +1 } },
+	{ MODKEY,                       XK_minus,  setgaps,        {.i = -1 } },
+	{ MODKEY,                       XK_equal,  setgaps,        {.i = +1 } },
+	{ MODKEY|ShiftMask,             XK_equal,  setgaps,        {.i = 0  } },
 	TAGKEYS(                        XK_1,                      0)
 	TAGKEYS(                        XK_2,                      1)
 	TAGKEYS(                        XK_3,                      2)
