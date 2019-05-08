@@ -3,7 +3,7 @@
 /* appearance */
 static const unsigned int borderpx  = 1;        /* border pixel of windows */
 static const unsigned int gappx     = 16;       /* gaps between windows */
-static const unsigned int snap      = 8;        /* snap pixel */
+static const unsigned int snap      = 10;       /* snap pixel */
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
 static const int horizpadbar        = 5;        /* horizontal padding for statusbar */
@@ -12,7 +12,7 @@ static const char *fonts[]          = { "DejaVu Sans Mono:size=9" };
 
 static const char *colors[][3]      = {
 	/*                  fg         bg         border  */
-	[SchemeNorm]   = { "#c3c3c3", "#06060b", "#dddddd" },
+	[SchemeNorm]   = { "#c3c3c3", "#06060b", "#c3c3c3" },
 	[SchemeSel]    = { "#1d1f21", "#6666d0", "#6666d0" },
 };
 
