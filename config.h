@@ -2,7 +2,7 @@
 
 /* appearance */
 static const unsigned int borderpx  = 1;        /* border pixel of windows */
-static const unsigned int gappx     = 16;       /* gaps between windows */
+static const unsigned int gappx     = 15;       /* gaps between windows */
 static const unsigned int snap      = 10;       /* snap pixel */
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
@@ -65,7 +65,7 @@ static const char *termcmd[]     = { "st", NULL, "st" };
 static const char *tmuxcmd[]     = { "st", "-e", "tmux", NULL };
 static const char *filemanager[] = { "st", "-e", "vifm", NULL };
 static const char *newsboat[]    = { "st", "-e", "newsboat", NULL };
-static const char *browser[]     = { "firefox", NULL, NULL, NULL, "Firefox" };
+static const char *browser[]     = { "firefox", NULL, "Firefox" };
 
 static Key keys[] = {
 	/* modifier                     key        function        argument */
@@ -102,8 +102,8 @@ static Key keys[] = {
 	{ MODKEY,                       XK_period, focusmon,       {.i = +1 } },
 	{ MODKEY|ShiftMask,             XK_comma,  tagmon,         {.i = -1 } },
 	{ MODKEY|ShiftMask,             XK_period, tagmon,         {.i = +1 } },
-	{ MODKEY,                       XK_minus,  setgaps,        {.i = -1 } },
-	{ MODKEY,                       XK_equal,  setgaps,        {.i = +1 } },
+	{ MODKEY,                       XK_minus,  setgaps,        {.i = -3 } },
+	{ MODKEY,                       XK_equal,  setgaps,        {.i = +3 } },
 	{ MODKEY|ShiftMask,             XK_equal,  setgaps,        {.i =  0 } },
 	TAGKEYS(                        XK_1,                      0)
 	TAGKEYS(                        XK_2,                      1)
