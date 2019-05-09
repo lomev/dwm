@@ -12,7 +12,7 @@ static const char *fonts[]          = { "DejaVu Sans Mono:size=9" };
 
 static const char *colors[][3]      = {
 	/*                  fg         bg         border  */
-	[SchemeNorm]   = { "#c3c3c3", "#06060b", "#c3c3c3" },
+	[SchemeNorm]   = { "#c3c3c3", "#06060b", "#626262" },
 	[SchemeSel]    = { "#1d1f21", "#6666d0", "#6666d0" },
 };
 
