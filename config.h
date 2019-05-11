@@ -24,6 +24,7 @@ static const Rule rules[] = {
 	 *	WM_NAME(STRING) = title
 	 */
 	/* class      instance    title       tags mask     isfloating   monitor */
+    { "surf",     NULL,       NULL,       0,            1,           -1 },
     { "sxiv",     NULL,       NULL,       0,            1,           -1 },
     { "zathura",  NULL,       NULL,       0,            1,           -1 },
     { "mpv",      NULL,       NULL,       0,            1,           -1 },
