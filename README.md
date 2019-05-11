@@ -1,7 +1,7 @@
 ## Added patches
 - hide_vacant_tags
 - pertag
-- fullgaps
+- singularborders
 - removetitle
 - statuspadding
 
