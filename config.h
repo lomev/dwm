@@ -24,7 +24,6 @@ static const Rule rules[] = {
 	 *	WM_NAME(STRING) = title
 	 */
 	/* class      instance    title       tags mask     isfloating   monitor */
-    { "surf",     NULL,       NULL,       0,            1,           -1 },
     { "sxiv",     NULL,       NULL,       0,            1,           -1 },
     { "zathura",  NULL,       NULL,       0,            1,           -1 },
     { "mpv",      NULL,       NULL,       0,            1,           -1 },
@@ -50,6 +49,9 @@ static const Layout layouts[] = {
 	{ MODKEY|ShiftMask,             KEY,      tag,            {.ui = 1 << TAG} }, \
 	{ MODKEY|ControlMask|ShiftMask, KEY,      toggletag,      {.ui = 1 << TAG} },
 
+#define XK_BR XK_bracketright
+#define XK_BL XK_bracketleft
+
 /* helper for spawning shell commands in the pre dwm-5.0 fashion */
 #define SHCMD(cmd) { .v = (const char*[]){ "/bin/sh", "-c", cmd, NULL } }
 
@@ -66,6 +68,7 @@ static const char *tmuxcmd[]     = { "st", "-e", "tmux", NULL };
 static const char *filemanager[] = { "st", "-e", "vifm", NULL };
 static const char *newsboat[]    = { "st", "-e", "newsboat", NULL };
 static const char *browser[]     = { "firefox", NULL, "Firefox" };
+static const char *passmenu[]    = { "passmenu", NULL, "passmenu" };
 
 static Key keys[] = {
 	/* modifier                     key        function        argument */
@@ -75,11 +78,12 @@ static Key keys[] = {
 	{ MODKEY,                       XK_w,      spawn,          {.v = browser } },
 	{ MODKEY,                       XK_v,      spawn,          {.v = filemanager } },
 	{ MODKEY,                       XK_n,      spawn,          {.v = newsboat } },
-	{ MODKEY,                       XK_Up,     spawn,          {.v = volup } },
-	{ MODKEY,                       XK_Down,   spawn,          {.v = voldown } },
+	{ MODKEY,                       XK_p,      spawn,          {.v = passmenu } },
+	{ MODKEY,                       XK_BR,     spawn,          {.v = volup } },
+	{ MODKEY,                       XK_BL,     spawn,          {.v = voldown } },
 	{ MODKEY,                       XK_x,      spawn,          {.v = lock } },
 	{ MODKEY|ShiftMask,             XK_x,      spawn,          SHCMD("$HOME/.scripts/dmenushut") },
-	{ MODKEY,                       XK_p,      spawn,          SHCMD("$HOME/.scripts/sshot area") },
+	{ MODKEY,                       XK_s,      spawn,          SHCMD("$HOME/.scripts/sshot area") },
 	{ MODKEY,                       XK_F1,     spawn,          SHCMD("$HOME/.scripts/dmenumount") },
 	{ MODKEY,                       XK_F2,     spawn,          SHCMD("$HOME/.scripts/dmenuumount") },
 	{ MODKEY,                       XK_b,      togglebar,      {0} },
