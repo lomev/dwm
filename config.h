@@ -65,9 +65,6 @@ static const char *lock[]    = { "slock", NULL };
 static const char *dmenucmd[]    = { "dmenu_run", "-m", dmenumon };
 static const char *termcmd[]     = { "st", NULL, "st" };
 static const char *tmuxcmd[]     = { "st", "-e", "tmux", NULL };
-static const char *filemanager[] = { "st", "-e", "vifm", NULL };
-static const char *newsboat[]    = { "st", "-e", "newsboat", NULL };
-static const char *browser[]     = { "firefox", NULL, "Firefox" };
 static const char *passmenu[]    = { "passmenu", NULL, "passmenu" };
 
 static Key keys[] = {
@@ -75,9 +72,7 @@ static Key keys[] = {
 	{ MODKEY,                       XK_d,      spawn,          {.v = dmenucmd } },
 	{ MODKEY,                       XK_Return, spawn,          {.v = termcmd } },
 	{ MODKEY|ShiftMask,             XK_Return, spawn,          {.v = tmuxcmd } },
-	{ MODKEY,                       XK_w,      spawn,          {.v = browser } },
-	{ MODKEY,                       XK_v,      spawn,          {.v = filemanager } },
-	{ MODKEY,                       XK_n,      spawn,          {.v = newsboat } },
+	{ MODKEY,                       XK_w,      spawn,          SHCMD("$BROWSER") },
 	{ MODKEY,                       XK_p,      spawn,          {.v = passmenu } },
 	{ MODKEY,                       XK_BR,     spawn,          {.v = volup } },
 	{ MODKEY,                       XK_BL,     spawn,          {.v = voldown } },
