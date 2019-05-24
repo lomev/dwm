@@ -10,7 +10,11 @@
 - [statuspadding](http://dwm.suckless.org/patches/statuspadding)
 - [here](http://dwm.suckless.org/patches/notitle) you can find similar patch. The one I use isn't available anymore on the suckless website.
 
-## To be used with (though it's not necessery)
+## Installation
 
-- [my dotfiles](https://github.com/reiffarth/dotfiles)
-- [my st build](https://github.com/reiffarth/st)
+```
+git clone https://github.com/reiffarth/dwm
+cd dwm
+make
+sudo make install
+```
