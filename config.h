@@ -2,12 +2,12 @@
 
 /* appearance */
 static const unsigned int borderpx  = 1;        /* border pixel of windows */
-static const unsigned int snap      = 8;        /* snap pixel */
+static const unsigned int snap      = 16;       /* snap pixel */
 static const int showbar            = 1;        /* 0 means no bar */
-static const int topbar             = 1;        /* 0 means bottom bar */
+static const int topbar             = 0;        /* 0 means bottom bar */
 static const int horizpadbar        = 8;        /* horizontal padding for statusbar */
 static const int vertpadbar         = 8;        /* vertical padding for statusbar */
-static const char *fonts[]          = { "DejaVu Sans Mono:size=8" };
+static const char *fonts[]          = { "DejaVu Sans Mono:size=8.5" };
 
 static const char *colors[][3]      = {
 	/*                  fg         bg         border  */
@@ -64,14 +64,13 @@ static const char *lock[]    = { "slock", NULL };
 
 static const char *dmenucmd[]    = { "dmenu_run", "-m", dmenumon };
 static const char *termcmd[]     = { "st", NULL, "st" };
-static const char *tmuxcmd[]     = { "st", "-e", "tmux", NULL };
+/* static const char *tmuxcmd[]     = { "st", "-e", "tmux", NULL }; */
 static const char *passmenu[]    = { "passmenu", NULL, "passmenu" };
 
 static Key keys[] = {
 	/* modifier                     key        function        argument */
 	{ MODKEY,                       XK_d,      spawn,          {.v = dmenucmd } },
-	{ MODKEY,                       XK_Return, spawn,          {.v = termcmd } },
-	{ MODKEY|ShiftMask,             XK_Return, spawn,          {.v = tmuxcmd } },
+	{ MODKEY|ShiftMask,             XK_Return, spawn,          {.v = termcmd } },
 	{ MODKEY,                       XK_w,      spawn,          SHCMD("$BROWSER") },
 	{ MODKEY,                       XK_p,      spawn,          {.v = passmenu } },
 	{ MODKEY,                       XK_BR,     spawn,          {.v = volup } },
@@ -89,8 +88,8 @@ static Key keys[] = {
 	{ MODKEY,                       XK_h,      setmfact,       {.f = -0.05} },
 	{ MODKEY,                       XK_l,      setmfact,       {.f = +0.05} },
 	{ MODKEY,                       XK_Tab,    view,           {0} },
-	{ MODKEY,                       XK_space,  zoom,           {0} },
-	{ MODKEY,                       XK_slash,  togglefloating, {0} },
+	{ MODKEY,                       XK_Return, zoom,           {0} },
+	{ MODKEY,                       XK_space,  togglefloating, {0} },
 	{ MODKEY,                       XK_q,      killclient,     {0} },
 	{ MODKEY,                       XK_t,      setlayout,      {.v = &layouts[0]} },
 	{ MODKEY,                       XK_f,      setlayout,      {.v = &layouts[1]} },
