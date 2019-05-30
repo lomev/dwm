@@ -6,7 +6,7 @@
 
 - [hide vacant tags](http://dwm.suckless.org/patches/hide_vacant_tags)
 - [pertag](http://dwm.suckless.org/patches/pertag)
-- [singularborders](http://dwm.suckless.org/patches/singularborders)
+- [noborder](http://dwm.suckless.org/patches/noborder)
 - [statuspadding](http://dwm.suckless.org/patches/statuspadding)
 - [here](http://dwm.suckless.org/patches/notitle) you can find similar patch. The one I use isn't available anymore on the suckless website.
 
