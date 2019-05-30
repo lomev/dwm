@@ -726,15 +726,18 @@ void
 drawbar(Monitor *m)
 {
 	int x, w, sw = 0;
+    int boxs = drw->fonts->h / 9;
+   	int boxw = drw->fonts->h / 6 + 2;
 	unsigned int i, occ = 0, urg = 0;
 	Client *c;
 
-	/* draw status first so it can be overdrawn by tags later */
-	if (m == selmon) { /* status is only drawn on selected monitor */
+	/* draw status first so it can be overdrawn by tags later
+	if (m == selmon) {  status is only drawn on selected monitor
 		drw_setscheme(drw, scheme[SchemeNorm]);
         sw = TEXTW(stext);
        	drw_text(drw, m->ww - sw, 0, sw, bh, lrpad / 2, stext, 0);
 	}
+    */
 
 	for (c = m->clients; c; c = c->next) {
 		occ |= c->tags == 255 ? 0 : c->tags;
@@ -757,8 +760,17 @@ drawbar(Monitor *m)
 	x = drw_text(drw, x, 0, w, bh, lrpad / 2, m->ltsymbol, 0);
 
 	if ((w = m->ww - sw - x) > bh) {
-		drw_setscheme(drw, scheme[SchemeNorm]);
-		drw_rect(drw, x, 0, w, bh, 1, 1);
+        if (m->sel) {
+			drw_setscheme(drw, scheme[SchemeNorm]);
+			drw_text(drw, x, 0, w, bh, lrpad / 2 , m->sel->name, 0);
+			if (m->sel->isfloating)
+				drw_rect(drw, x + boxs, boxs, boxw, boxw, m->sel->isfixed, 0);
+		} else {
+			drw_setscheme(drw, scheme[SchemeNorm]);
+			drw_rect(drw, x, 0, w, bh, 1, 1);
+		}
+		// drw_setscheme(drw, scheme[SchemeNorm]);
+		// drw_rect(drw, x, 0, w, bh, 1, 1);
 	}
 	drw_map(drw, m->barwin, 0, 0, m->ww, bh);
 }

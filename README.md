@@ -8,7 +8,7 @@
 - [pertag](http://dwm.suckless.org/patches/pertag)
 - [noborder](http://dwm.suckless.org/patches/noborder)
 - [statuspadding](http://dwm.suckless.org/patches/statuspadding)
-- [here](http://dwm.suckless.org/patches/notitle) you can find similar patch. The one I use isn't available anymore on the suckless website.
+- and a few my own changes to the source code and config file 
 
 ## Installation
 
