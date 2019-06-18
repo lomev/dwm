@@ -2,15 +2,15 @@
 
 /* appearance */
 static const unsigned int borderpx  = 1;        /* border pixel of windows */
-static const unsigned int snap      = 12;       /* snap pixel */
+static const unsigned int snap      = 16;       /* snap pixel */
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
 static const char *fonts[]          = { "DejaVu Sans Mono:size=7" };
 
 static const char *colors[][3]      = {
 	/*                  fg         bg         border  */
-	[SchemeNorm]   = { "#bbbbbb", "#222222", "#444444" },
-	[SchemeSel]    = { "#eeeeee", "#005577", "#005577" },
+	[SchemeNorm]   = { "#bbbbbb", "#111111", "#151515" },
+	[SchemeSel]    = { "#ffffff", "#111111", "#444444" },
 };
 
 /* tagging */
@@ -74,10 +74,9 @@ static Key keys[] = {
 	{ MODKEY,                       XK_BR,     spawn,          {.v = volup } },
 	{ MODKEY,                       XK_BL,     spawn,          {.v = voldown } },
 	{ MODKEY,                       XK_x,      spawn,          {.v = lock } },
-	{ MODKEY|ShiftMask,             XK_x,      spawn,          SHCMD("$HOME/.scripts/dmenushut") },
-	{ MODKEY,                       XK_s,      spawn,          SHCMD("$HOME/.scripts/sshot area") },
-	{ MODKEY,                       XK_F1,     spawn,          SHCMD("$HOME/.scripts/dmenumount") },
-	{ MODKEY,                       XK_F2,     spawn,          SHCMD("$HOME/.scripts/dmenuumount") },
+	{ MODKEY,                       XK_s,      spawn,          SHCMD("sshot area") },
+	{ MODKEY,                       XK_F1,     spawn,          SHCMD("dmenumount") },
+	{ MODKEY,                       XK_F2,     spawn,          SHCMD("dmenuumount") },
 	{ MODKEY,                       XK_b,      togglebar,      {0} },
 	{ MODKEY,                       XK_j,      focusstack,     {.i = +1 } },
 	{ MODKEY,                       XK_k,      focusstack,     {.i = -1 } },
@@ -107,7 +106,8 @@ static Key keys[] = {
 	TAGKEYS(                        XK_7,                      6)
 	TAGKEYS(                        XK_8,                      7)
 	TAGKEYS(                        XK_9,                      8)
-	{ MODKEY|ShiftMask,             XK_q,      quit,           {0} },
+	{ MODKEY,                       XK_F5,     quit,           {0} },
+	{ MODKEY,                       XK_F6,     spawn,          SHCMD("pkill xinit") },
 };
 
 /* button definitions */
