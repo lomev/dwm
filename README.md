@@ -6,6 +6,7 @@
 
 - [hide vacant tags](http://dwm.suckless.org/patches/hide_vacant_tags)
 - [pertag](http://dwm.suckless.org/patches/pertag)
+- [statuscolors](http://dwm.suckless.org/patches/statuscolors)
 - and a few my own changes to the source code and config file 
 
 ## Installation

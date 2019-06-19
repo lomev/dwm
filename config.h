@@ -9,8 +9,10 @@ static const char *fonts[]          = { "DejaVu Sans Mono:size=7" };
 
 static const char *colors[][3]      = {
 	/*                  fg         bg         border  */
-	[SchemeNorm]   = { "#bbbbbb", "#111111", "#151515" },
-	[SchemeSel]    = { "#ffffff", "#111111", "#444444" },
+	[SchemeNorm]   = { "#bbbbbb", "#222222", "#151515" },
+	[SchemeSel]    = { "#9dffeb", "#222222", "#444444" },
+	[SchemeWarn]   = { "#98c769", "#222222", "#151515" },
+	[SchemeUrgent] = { "#1dc772", "#222222", "#151515" },
 };
 
 /* tagging */
