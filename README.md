@@ -12,7 +12,7 @@
 ## Installation
 
 ```
-git clone https://github.com/reiffarth/dwm
+git clone https://github.com/lomev/dwm
 cd dwm
 make
 sudo make install
