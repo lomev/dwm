@@ -11,8 +11,6 @@ static const char *colors[][3]      = {
 	/*                  fg         bg         border  */
 	[SchemeNorm]   = { "#dddddd", "#222222", "#151515" },
 	[SchemeSel]    = { "#9dffeb", "#222222", "#444444" },
-	[SchemeWarn]   = { "#98c769", "#222222", "#151515" },
-	[SchemeUrgent] = { "#1dc772", "#222222", "#151515" },
 };
 
 /* tagging */
