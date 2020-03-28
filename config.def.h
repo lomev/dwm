@@ -14,15 +14,15 @@ static const int horizpadbar        = 1;        /* horizontal padding for status
 static const int vertpadbar         = 6;        /* vertical padding for statusbar */
 static const char *fonts[]          = { "monospace:size=10" };
 
-static const char normbordercolor[] = "#444444";
-static const char normbgcolor[]     = "#222222";
-static const char normfgcolor[]     = "#bbbbbb";
+static char normbordercolor[] = "#444444";
+static char normbgcolor[]     = "#222222";
+static char normfgcolor[]     = "#bbbbbb";
 
-static const char selbordercolor[]  = "#005577";
-static const char selbgcolor[]      = "#005577";
-static const char selfgcolor[]      = "#eeeeee";
+static char selbordercolor[]  = "#005577";
+static char selbgcolor[]      = "#005577";
+static char selfgcolor[]      = "#eeeeee";
 
-static const char *colors[][3]      = {
+static char *colors[][3]      = {
 	/*                 fg           bg           border  */
 	[SchemeNorm]   = { normfgcolor, normbgcolor, normbordercolor },
 	[SchemeSel]    = { selfgcolor,  selbgcolor,  selbordercolor  },
@@ -122,6 +122,7 @@ static Key keys[] = {
 	{ MODKEY,                     XK_period,    focusmon,       {.i = +1 } },
 	{ MODKEY|ShiftMask,           XK_comma,     tagmon,         {.i = -1 } },
 	{ MODKEY|ShiftMask,           XK_period,    tagmon,         {.i = +1 } },
+	{ MODKEY,                     XK_F5,        xrdb,           {.v = NULL } },
 	{ MODKEY|ControlMask,         XK_j,         setgaps,        {.i = -1 } },
 	{ MODKEY|ControlMask,         XK_k,         setgaps,        {.i = +1 } },
 	{ MODKEY,                     XK_Home,      setgaps,        {.i = 0  } },
