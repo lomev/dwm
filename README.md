@@ -14,6 +14,7 @@
 - [floatrules](http://dwm.suckless.org/patches/floatrules)
 - [zoomswap](http://dwm.suckless.org/patches/zoomswap)
 - [transfer](http://dwm.suckless.org/patches/transfer)
+- [push_no_master](http://dwm.suckless.org/patches/push)
 - and a few my own changes to the source code and config file 
 
 ## Installation
