@@ -8,6 +8,8 @@
 - [pertag](http://dwm.suckless.org/patches/pertag)
 - [save_floats](http://dwm.suckless.org/patches/save_floats)
 - [actualfullscreen](http://dwm.suckless.org/patches/actualfullscreen)
+- [statuspadding](http://dwm.suckless.org/patches/statuspadding)
+- [fullgaps](http://dwm.suckless.org/patches/fullgaps)
 - and a few my own changes to the source code and config file 
 
 ## Installation
