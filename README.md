@@ -10,6 +10,8 @@
 - [actualfullscreen](http://dwm.suckless.org/patches/actualfullscreen)
 - [statuspadding](http://dwm.suckless.org/patches/statuspadding)
 - [fullgaps](http://dwm.suckless.org/patches/fullgaps)
+- [systray](http://dwm.suckless.org/patches/systray)
+- [floatrules](http://dwm.suckless.org/patches/floatrules)
 - and a few my own changes to the source code and config file 
 
 ## Installation

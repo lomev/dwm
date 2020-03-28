@@ -36,10 +36,10 @@ static const Rule rules[] = {
 	 *	WM_CLASS(STRING) = instance, class
 	 *	WM_NAME(STRING) = title
 	 */
-	/* class      instance    title       tags mask     isfloating   monitor */
-    { "sxiv",     NULL,       NULL,       0,            1,           -1 },
-    { "zathura",  NULL,       NULL,       0,            1,           -1 },
-    { "mpv",      NULL,       NULL,       0,            1,           -1 },
+	/* class      instance    title       tags mask     isfloating   monitor    float x,y,w,h     floatborderpx */
+    // { "sxiv",     NULL,       NULL,       0,            1,           -1 },
+    // { "zathura",  NULL,       NULL,       0,            1,           -1 },
+    { "mpv",      NULL,       NULL,       0,            1,           -1,        30,30,320,240,    4 },
     { "Firefox",  NULL,       NULL,       1 << 8,       0,           -1 },
 };
 
