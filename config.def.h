@@ -5,7 +5,9 @@ static const unsigned int borderpx  = 1;        /* border pixel of windows */
 static const unsigned int snap      = 16;       /* snap pixel */
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
-static const char *fonts[]          = { "DejaVu Sans Mono:size=7" };
+static const int horizpadbar        = 2;        /* horizontal padding for statusbar */
+static const int vertpadbar         = 4;        /* vertical padding for statusbar */
+static const char *fonts[]          = { "monospace:size=10" };
 
 static const char *colors[][3]      = {
 	/*                  fg         bg         border  */
