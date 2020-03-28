@@ -12,6 +12,8 @@
 - [fullgaps](http://dwm.suckless.org/patches/fullgaps)
 - [systray](http://dwm.suckless.org/patches/systray)
 - [floatrules](http://dwm.suckless.org/patches/floatrules)
+- [zoomswap](http://dwm.suckless.org/patches/zoomswap)
+- [transfer](http://dwm.suckless.org/patches/transfer)
 - and a few my own changes to the source code and config file 
 
 ## Installation
