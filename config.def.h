@@ -10,10 +10,18 @@ static const int horizpadbar        = 2;        /* horizontal padding for status
 static const int vertpadbar         = 4;        /* vertical padding for statusbar */
 static const char *fonts[]          = { "monospace:size=10" };
 
+static const char normbordercolor[] = "#444444";
+static const char normbgcolor[]     = "#222222";
+static const char normfgcolor[]     = "#bbbbbb";
+
+static const char selbordercolor[]  = "#005577";
+static const char selbgcolor[]      = "#005577";
+static const char selfgcolor[]      = "#eeeeee";
+
 static const char *colors[][3]      = {
-	/*                  fg         bg         border  */
-	[SchemeNorm]   = { "#dddddd", "#222222", "#151515" },
-	[SchemeSel]    = { "#9dffeb", "#222222", "#444444" },
+	/*                 fg           bg           border  */
+	[SchemeNorm]   = { normfgcolor, normbgcolor, normbordercolor },
+	[SchemeSel]    = { selfgcolor,  selbgcolor,  selbordercolor  },
 };
 
 /* tagging */
