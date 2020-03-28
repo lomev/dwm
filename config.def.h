@@ -77,6 +77,9 @@ static const char *lockcmd[]      = { "slock", NULL };
 static const char *passcmd[]      = { "passmenu", NULL };
 static const char *webcmd[]       = { "firefox", NULL };
 
+static const char scratchpadname[] = "scratchpad";
+static const char *scratchpadcmd[] = { "st", "-t", scratchpadname, "-g", "120x34", NULL };
+
 static const char *dmenucmd[]    = { "dmenu_run", "-m", dmenumon };
 static const char *termcmd[]     = { "st", NULL, "st" };
 
@@ -84,11 +87,12 @@ static Key keys[] = {
 	/* modifier                   key           function        argument */
 	{ MODKEY,                     XK_space,     spawn,          {.v = dmenucmd } },
 	{ MODKEY|ShiftMask,           XK_Return,    spawn,          {.v = termcmd } },
+	{ MODKEY,                     XK_s,         togglescratch,  {.v = scratchpadcmd } },
 	{ MODKEY,                     XK_w,         spawn,          {.v = webcmd } },
 	{ MODKEY,                     XK_p,         spawn,          {.v = passcmd } },
 	{ MODKEY|ShiftMask,           XK_x ,        spawn,          {.v = lockcmd } },
 	{ MODKEY,                     XK_equal,     spawn,          {.v = volupcmd } },
-	{ MODKEY,                     XK_equal,     spawn,          {.v = voltogglecmd } },
+	{ MODKEY|ShiftMask,           XK_equal,     spawn,          {.v = voltogglecmd } },
 	{ MODKEY,                     XK_minus,     spawn,          {.v = voldowncmd } },
     { 0,                          0x1008ff13,   spawn,          {.v = volupcmd } },
     { 0,                          0x1008ff12,   spawn,          {.v = voltogglecmd } },
