@@ -16,6 +16,8 @@
 - [transfer](http://dwm.suckless.org/patches/transfer)
 - [push_no_master](http://dwm.suckless.org/patches/push)
 - [scratchpad](http://dwm.suckless.org/patches/scratchpad)
+- [xrdb](http://dwm.suckless.org/patches/xrdb)
+- [dwmc](http://dwm.suckless.org/patches/dwmc)
 - and a few my own changes to the source code and config file 
 
 ## Installation
