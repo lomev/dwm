@@ -9,8 +9,8 @@ static const unsigned int systrayspacing = 3;   /* systray spacing */
 static const int systraypinningfailfirst = 1;   /* 1: if pinning fails, display systray on the first monitor, False: display systray on the last monitor*/
 static const int showsystray        = 1;        /* 0 means no systray */
 static const int showbar            = 1;        /* 0 means no bar */
-static const int topbar             = 1;        /* 0 means bottom bar */
-static const int horizpadbar        = 2;        /* horizontal padding for statusbar */
+static const int topbar             = 0;        /* 0 means bottom bar */
+static const int horizpadbar        = 1;        /* horizontal padding for statusbar */
 static const int vertpadbar         = 4;        /* vertical padding for statusbar */
 static const char *fonts[]          = { "monospace:size=9" };
 
@@ -46,7 +46,7 @@ static const Rule rules[] = {
 /* layout(s) */
 static const float mfact     = 0.55; /* factor of master area size [0.05..0.95] */
 static const int nmaster     = 1;    /* number of clients in master area */
-static const int resizehints = 0;    /* 1 means respect size hints in tiled resizals */
+static const int resizehints = 1;    /* 1 means respect size hints in tiled resizals */
 
 static const Layout layouts[] = {
 	/* symbol     arrange function */
@@ -71,25 +71,28 @@ static char dmenumon[2] = "0";
 
 static const char *sshotcmd[]     = { "sshot", NULL };
 static const char *volupcmd[]     = { "amixer", "-q", "set", "Master", "5%+", NULL };
-static const char *voltogglecmd[] = { "amixer", "-q", "set", "Master", "toggle", "unmute" };
-static const char *voldowncmd[]   = { "amixer", "-q", "set", "Master", "5%-", "unmute" };
+static const char *voltogglecmd[] = { "amixer", "-q", "set", "Master", "toggle", NULL };
+static const char *voldowncmd[]   = { "amixer", "-q", "set", "Master", "5%-", NULL };
+
 static const char *lockcmd[]      = { "slock", NULL };
 static const char *passcmd[]      = { "passmenu", NULL };
+static const char *clipmenucmd[]  = { "clipmenu", NULL };
 static const char *webcmd[]       = { "firefox", NULL };
 
 static const char scratchpadname[] = "scratchpad";
 static const char *scratchpadcmd[] = { "st", "-t", scratchpadname, "-g", "120x34", NULL };
 
 static const char *dmenucmd[]    = { "dmenu_run", "-m", dmenumon };
-static const char *termcmd[]     = { "st", NULL, "st" };
+static const char *termcmd[]     = { "st", NULL };
 
 static Key keys[] = {
 	/* modifier                   key           function        argument */
 	{ MODKEY,                     XK_space,     spawn,          {.v = dmenucmd } },
 	{ MODKEY|ShiftMask,           XK_Return,    spawn,          {.v = termcmd } },
 	{ MODKEY,                     XK_s,         togglescratch,  {.v = scratchpadcmd } },
-	{ MODKEY,                     XK_w,         spawn,          {.v = webcmd } },
+	{ MODKEY|ShiftMask,           XK_w,         spawn,          {.v = webcmd } },
 	{ MODKEY,                     XK_p,         spawn,          {.v = passcmd } },
+	{ MODKEY,                     XK_Insert,    spawn,          {.v = clipmenucmd } },
 	{ MODKEY|ShiftMask,           XK_x ,        spawn,          {.v = lockcmd } },
 	{ MODKEY,                     XK_equal,     spawn,          {.v = volupcmd } },
 	{ MODKEY|ShiftMask,           XK_equal,     spawn,          {.v = voltogglecmd } },
