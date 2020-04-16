@@ -37,10 +37,11 @@ static const Rule rules[] = {
 	 *	WM_NAME(STRING) = title
 	 */
 	/* class      instance    title       tags mask     isfloating   monitor    float x,y,w,h     floatborderpx */
+    { "st",       NULL,       NULL,       0,            0,           -1,        30,30,320,240,    1 },
     { "sxiv",     NULL,       NULL,       0,            1,           -1,        30,30,320,240,    1 },
     { "zathura",  NULL,       NULL,       0,            1,           -1,        30,30,320,240,    1 },
     { "mpv",      NULL,       NULL,       0,            1,           -1,        30,30,320,240,    4 },
-    { "Firefox",  NULL,       NULL,       1 << 8,       0,           -1 },
+    { "Firefox",  NULL,       NULL,       1 << 8,       0,           -1,        30,30,320,240,    1 },
 };
 
 /* layout(s) */
@@ -53,6 +54,7 @@ static const Layout layouts[] = {
 	{ "[T]",      tile },    /* first entry is default */
 	{ "[F]",      NULL },    /* no layout function means floating behavior */
 	{ "[M]",      monocle },
+	{ "[B]",      bstack },
 };
 
 /* key definitions */
@@ -119,6 +121,7 @@ static Key keys[] = {
 	{ MODKEY,                     XK_t,         setlayout,      {.v = &layouts[0]} },
 	{ MODKEY,                     XK_f,         setlayout,      {.v = &layouts[1]} },
 	{ MODKEY,                     XK_m,         setlayout,      {.v = &layouts[2]} },
+	{ MODKEY,                     XK_u,         setlayout,      {.v = &layouts[3]} },
 	{ MODKEY,                     XK_0,         view,           {.ui = ~0 } },
 	{ MODKEY|ShiftMask,           XK_0,         tag,            {.ui = ~0 } },
 	{ MODKEY,                     XK_comma,     focusmon,       {.i = -1 } },

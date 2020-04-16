@@ -18,6 +18,7 @@
 - [scratchpad](http://dwm.suckless.org/patches/scratchpad)
 - [xrdb](http://dwm.suckless.org/patches/xrdb)
 - [dwmc](http://dwm.suckless.org/patches/dwmc)
+- [bstack](http://dwm.suckless.org/patches/bstack)
 - and a few my own changes to the source code and config file 
 
 ## Installation
