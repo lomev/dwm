@@ -854,7 +854,7 @@ dirtomon(int dir)
 void
 drawbar(Monitor *m)
 {
-	int x, w, sw = 0, stw = 0;
+	int x, w, mid, sw = 0, stw = 0;
 	unsigned int i, occ = 0, urg = 0;
 	Client *c;
 
@@ -891,8 +891,9 @@ drawbar(Monitor *m)
 
 	if ((w = m->ww - sw - stw - x) > bh) {
         if (m->sel) {
+            mid = (m->ww - TEXTW(m->sel->name)) / 2 - x;
 		    drw_setscheme(drw, scheme[SchemeNorm]);
-		    drw_text(drw, x, 0, w, bh, lrpad / 2, m->sel->name, 0);
+		    drw_text(drw, x, 0, w, bh, mid, m->sel->name, 0);
         } else {
             drw_setscheme(drw, scheme[SchemeNorm]);
             drw_rect(drw, x, 0, w, bh, 1, 1);
