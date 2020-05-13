@@ -1,5 +1,4 @@
 /* See LICENSE f/le for copyright and license details. */
-#define MODKEY Mod4Mask
 
 /* appearance */
 static const unsigned int borderpx  = 1;        /* border pixel of windows */
@@ -57,6 +56,8 @@ static const Layout layouts[] = {
 	{ "[B]",      bstack },
 };
 
+/* key definitions */
+#define MODKEY Mod4Mask
 
 /* button definitions */
 /* click can be ClkTagBar, ClkLtSymbol, ClkStatusText, ClkWinTitle, ClkClientWin, or ClkRootWin */
