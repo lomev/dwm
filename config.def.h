@@ -59,6 +59,7 @@ static const Layout layouts[] = {
 	{ "\ue006",      NULL },    /* no layout function means floating behavior */
 	{ "\ue000",      monocle },
 	{ "\ue003",      bstack },
+	{ "\ue26b",      deck },
 };
 
 /* key definitions */
