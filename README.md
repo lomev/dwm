@@ -11,7 +11,6 @@
 - [statuspadding](http://dwm.suckless.org/patches/statuspadding)
 - [fullgaps](http://dwm.suckless.org/patches/fullgaps)
 - [systray](http://dwm.suckless.org/patches/systray)
-- [floatrules](http://dwm.suckless.org/patches/floatrules)
 - [zoomswap](http://dwm.suckless.org/patches/zoomswap)
 - [transfer](http://dwm.suckless.org/patches/transfer)
 - [push_no_master](http://dwm.suckless.org/patches/push)

@@ -2,18 +2,24 @@
 
 /* appearance */
 static const unsigned int borderpx  = 1;        /* border pixel of windows */
-static const unsigned int gappx     = 8;        /* gaps between windows */
+static const unsigned int gappx     = 0;        /* gaps between windows */
 static const unsigned int snap      = 8;        /* snap pixel */
-static const unsigned int systraypinning = 0;   /* 0: sloppy systray follows selected monitor, >0: pin systray to monitor X */
-static const unsigned int systrayspacing = 3;   /* systray spacing */
-static const int systraypinningfailfirst = 1;   /* 1: if pinning fails, display systray on the first monitor, False: display systray on the last monitor*/
-static const int showsystray        = 1;        /* 0 means no systray */
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
-static const int horizpadbar        = 1;        /* horizontal padding for statusbar */
-static const int vertpadbar         = 5;        /* vertical padding for statusbar */
-static const char *fonts[]          = { "monospace:size=9" };
+static const int horizpadbar        = 3;        /* horizontal padding for statusbar */
+static const int vertpadbar         = 2;        /* vertical padding for statusbar */
+static const int showsystray        = 1;        /* 0 means no systray */
 
+/* systray settings */
+static const unsigned int systraypinning = 0;   /* 0: sloppy systray follows selected monitor, >0: pin systray to monitor X */
+static const unsigned int systrayspacing = 2;   /* systray spacing */
+static const int systraypinningfailfirst = 1;   /* 1: if pinning fails, display systray on the first monitor, False: display systray on the last monitor*/
+
+/* fonts */
+static const char *fonts[] = { "Droid Sans Mono:size=9",
+                               "Siji" };
+
+/* default colorscheme */
 static char normbordercolor[] = "#444444";
 static char normbgcolor[]     = "#222222";
 static char normfgcolor[]     = "#bbbbbb";
@@ -29,18 +35,16 @@ static char *colors[][3]      = {
 };
 
 /* tagging */
-static const char *tags[] = { "1", "2", "3", "4", "5" };
+static const char *tags[] = { "一", "二", "三", "四", "五" };
 
 static const Rule rules[] = {
 	/* xprop(1):
 	 *	WM_CLASS(STRING) = instance, class
 	 *	WM_NAME(STRING) = title
 	 */
-	/* class      instance    title       tags mask     isfloating   monitor    float x,y,w,h     floatborderpx */
-    { "sxiv",     NULL,       NULL,       0,            1,           -1,        30,30,320,240,    1 },
-    { "zathura",  NULL,       NULL,       0,            1,           -1,        30,30,320,240,    1 },
-    { "mpv",      NULL,       NULL,       0,            1,           -1,        30,30,320,240,    4 },
-    { "Firefox",  NULL,       NULL,       1 << 4,       0,           -1,        30,30,320,240,    1 },
+	/* class      instance    title       tags mask     isfloating   monitor */
+    { "mpv",      NULL,       NULL,       0,            1,           -1 },
+    { "Firefox",  NULL,       NULL,       1 << 4,       0,           -1 },
 };
 
 /* layout(s) */
@@ -49,11 +53,11 @@ static const int nmaster     = 1;    /* number of clients in master area */
 static const int resizehints = 1;    /* 1 means respect size hints in tiled resizals */
 
 static const Layout layouts[] = {
-	/* symbol     arrange function */
-	{ "[T]",      tile },    /* first entry is default */
-	{ "[F]",      NULL },    /* no layout function means floating behavior */
-	{ "[M]",      monocle },
-	{ "[B]",      bstack },
+	/* symbol        arrange function */
+	{ "\ue002",      tile },    /* first entry is default */
+	{ "\ue006",      NULL },    /* no layout function means floating behavior */
+	{ "\ue000",      monocle },
+	{ "\ue003",      bstack },
 };
 
 /* key definitions */

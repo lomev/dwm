@@ -128,7 +128,6 @@ struct Client {
 	int bw, oldbw;
 	unsigned int tags;
 	int isfixed, isfloating, isurgent, neverfocus, oldstate, isfullscreen;
-	int floatborderpx;
 	Client *next;
 	Client *snext;
 	Monitor *mon;
@@ -183,8 +182,6 @@ typedef struct {
 	unsigned int tags;
 	int isfloating;
 	int monitor;
-	int floatx, floaty, floatw, floath;
-	int floatborderpx;
 } Rule;
 
 typedef struct Systray   Systray;
@@ -378,13 +375,6 @@ applyrules(Client *c)
 		{
 			c->isfloating = r->isfloating;
 			c->tags |= r->tags;
-			c->floatborderpx = r->floatborderpx;
-			if (r->isfloating) {
-				c->x = r->floatx;
-				c->y = r->floaty;
-				c->w = r->floatw;
-				c->h = r->floath;
-			}
 			for (m = mons; m && m->num != r->monitor; m = m->next);
 			if (m)
 				c->mon = m;
@@ -850,7 +840,7 @@ dirtomon(int dir)
 void
 drawbar(Monitor *m)
 {
-	int x, w, mid, sw = 0, stw = 0;
+	int x, w, sw = 0, stw = 0;
     int boxs = drw->fonts->h / 9;
    	int boxw = drw->fonts->h / 6 + 2;
 	unsigned int i, occ = 0, urg = 0;
@@ -889,14 +879,8 @@ drawbar(Monitor *m)
 	x = drw_text(drw, x, 0, w, bh, lrpad / 2, m->ltsymbol, 0);
 
 	if ((w = m->ww - sw - stw - x) > bh) {
-        if (m->sel) {
-            mid = (m->ww - TEXTW(m->sel->name)) / 2 - x;
-		    drw_setscheme(drw, scheme[SchemeNorm]);
-		    drw_text(drw, x, 0, w, bh, mid, m->sel->name, 0);
-        } else {
-            drw_setscheme(drw, scheme[SchemeNorm]);
-            drw_rect(drw, x, 0, w, bh, 1, 1);
-        }
+        drw_setscheme(drw, scheme[SchemeNorm]);
+        drw_rect(drw, x, 0, w, bh, 1, 1);
 	}
 	drw_map(drw, m->barwin, 0, 0, m->ww - stw, bh);
 }
@@ -1332,14 +1316,8 @@ maprequest(XEvent *e)
 void
 monocle(Monitor *m)
 {
-	unsigned int n = 0;
 	Client *c;
 
-	for (c = m->clients; c; c = c->next)
-		if (ISVISIBLE(c))
-			n++;
-	if (n > 0) /* override layout symbol */
-		snprintf(m->ltsymbol, sizeof m->ltsymbol, "[%d]", n);
 	for (c = nexttiled(m->clients); c; c = nexttiled(c->next))
 		resize(c, m->wx + m->gappx, m->wy + m->gappx, m->ww - 2 * c->bw - 2 * m->gappx, m->wh - 2 * c->bw - 2 * m->gappx, 0);
 }
@@ -1576,10 +1554,7 @@ resizeclient(Client *c, int x, int y, int w, int h)
 	c->oldy = c->y; c->y = wc.y = y;
 	c->oldw = c->w; c->w = wc.width = w;
 	c->oldh = c->h; c->h = wc.height = h;
-	if (c->isfloating)
-		wc.border_width = c->floatborderpx;
-	else
-		wc.border_width = c->bw;
+	wc.border_width = c->bw;
 	XConfigureWindow(dpy, c->win, CWX|CWY|CWWidth|CWHeight|CWBorderWidth, &wc);
 	configure(c);
 	XSync(dpy, False);
