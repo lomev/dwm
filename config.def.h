@@ -2,7 +2,7 @@
 
 /* appearance */
 static const unsigned int borderpx  = 1;        /* border pixel of windows */
-static const unsigned int gappx     = 0;        /* gaps between windows */
+static const unsigned int gappx     = 16;        /* gaps between windows */
 static const unsigned int snap      = 8;        /* snap pixel */
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
@@ -16,14 +16,13 @@ static const unsigned int systrayspacing = 2;   /* systray spacing */
 static const int systraypinningfailfirst = 1;   /* 1: if pinning fails, display systray on the first monitor, False: display systray on the last monitor*/
 
 /* fonts */
-static const char *fonts[] = { "Droid Sans Mono:size=9",
+static const char *fonts[] = { "monospace:size=8",
                                "Siji" };
 
 /* default colorscheme */
 static char normbordercolor[] = "#444444";
 static char normbgcolor[]     = "#222222";
 static char normfgcolor[]     = "#bbbbbb";
-
 static char selbordercolor[]  = "#005577";
 static char selbgcolor[]      = "#005577";
 static char selfgcolor[]      = "#eeeeee";
