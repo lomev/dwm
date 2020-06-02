@@ -709,7 +709,7 @@ configurenotify(XEvent *e)
 
 void
 deck(Monitor *m) {
-	unsigned int i, n, h, mw, my;
+	unsigned int i, n, h, mw, my, ns;
 	Client *c;
 
 	for(n = 0, c = nexttiled(m->clients); c; c = nexttiled(c->next), n++);
@@ -718,18 +718,19 @@ deck(Monitor *m) {
 
 	if(n > m->nmaster) {
 		mw = m->nmaster ? m->ww * m->mfact : 0;
-		// snprintf(m->ltsymbol, sizeof m->ltsymbol, "[%d]", n - m->nmaster);
-	}
-	else
+		ns = m->nmaster > 0 ? 2 : 1;
+	} else {
 		mw = m->ww;
-	for(i = my = 0, c = nexttiled(m->clients); c; c = nexttiled(c->next), i++)
+		ns = 1;
+	}
+	for(i = 0, my = m->gappx, c = nexttiled(m->clients); c; c = nexttiled(c->next), i++)
 		if(i < m->nmaster) {
-			h = (m->wh - my) / (MIN(n, m->nmaster) - i);
-			resize(c, m->wx, m->wy + my, mw - (2*c->bw), h - (2*c->bw), False);
-			my += HEIGHT(c);
+			h = (m->wh - my) / (MIN(n, m->nmaster) - i) - m->gappx;
+			resize(c, m->wx + m->gappx, m->wy + my, mw - (2*c->bw) - m->gappx*(5-ns)/2, h - (2*c->bw), False);
+			my += HEIGHT(c) + m->gappx;
 		}
 		else
-			resize(c, m->wx + mw, m->wy, m->ww - mw - (2*c->bw), m->wh - (2*c->bw), False);
+			resize(c, m->wx + mw + m->gappx/ns, m->wy + m->gappx, m->ww - mw - (2*c->bw) - m->gappx*(5-ns)/2, m->wh - (2*c->bw) - 2*m->gappx, False);
 }
 
 void
@@ -2825,7 +2826,7 @@ transfer(const Arg *arg) {
 	arrange(selmon);
 }
 
-static void
+void
 bstack(Monitor *m) {
 	int w, h, mh, mx, tx, ty, tw;
 	unsigned int i, n;
@@ -2839,18 +2840,18 @@ bstack(Monitor *m) {
 		tw = m->ww / (n - m->nmaster);
 		ty = m->wy + mh;
 	} else {
-		mh = m->wh;
+		mh = m->wh - m->gappx;
 		tw = m->ww;
 		ty = m->wy;
 	}
 	for (i = mx = 0, tx = m->wx, c = nexttiled(m->clients); c; c = nexttiled(c->next), i++) {
 		if (i < m->nmaster) {
-			w = (m->ww - mx) / (MIN(n, m->nmaster) - i) - m->gappx;
-			resize(c, m->wx + mx + m->gappx, m->wy + m->gappx, w - (2 * c->bw) - m->gappx, mh - (2 * c->bw) - m->gappx, 0);
+			w = (m->ww - mx) / (MIN(n, m->nmaster) - i);
+			resize(c, m->wx + mx + m->gappx, m->wy + m->gappx, w - (2 * c->bw) - 2 * m->gappx, mh - (2 * c->bw) - m->gappx, 0);
 			mx += WIDTH(c) + m->gappx;
 		} else {
-			h = m->wh - mh - m->gappx;
-			resize(c, tx + m->gappx, ty + m->gappx, tw - (2 * c->bw) - 2 * m->gappx, h - (2 * c->bw) - m->gappx, 0);
+			h = m->wh - mh;
+			resize(c, tx + m->gappx, ty + m->gappx, tw - (2 * c->bw) - 2 * m->gappx, h - (2 * c->bw) - 2 * m->gappx, 0);
 			if (tw != m->ww)
 				tx += WIDTH(c) + m->gappx;
 		}
