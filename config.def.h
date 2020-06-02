@@ -154,4 +154,5 @@ static Signal signals[] = {
 	{ "setgaps",        setgaps },
 	{ "xrdb",           xrdb },
 	{ "togglefullscr",  togglefullscr },
+	{ "shiftview",      shiftview },
 };
