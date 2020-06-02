@@ -4,7 +4,6 @@
 
 ## Added patches
 
-- [hide vacant tags](http://dwm.suckless.org/patches/hide_vacant_tags)
 - [pertag](http://dwm.suckless.org/patches/pertag)
 - [save_floats](http://dwm.suckless.org/patches/save_floats)
 - [actualfullscreen](http://dwm.suckless.org/patches/actualfullscreen)
@@ -16,7 +15,7 @@
 - [push_no_master](http://dwm.suckless.org/patches/push)
 - [xrdb](http://dwm.suckless.org/patches/xrdb)
 - [dwmc](http://dwm.suckless.org/patches/dwmc)
-- [bstack](http://dwm.suckless.org/patches/bstack)
+- [bstack](http://dwm.suckless.org/patches/bottomstack)
 - and a few my own changes to the source code and config file 
 
 ## Installation
