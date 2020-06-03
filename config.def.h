@@ -36,6 +36,21 @@ static char *colors[][3]      = {
 /* tagging */
 static const char *tags[] = { "一", "二", "三", "四", "五" };
 
+/* scratchpads */
+typedef struct {
+	const char *name;
+	const void *cmd;
+} Sp;
+
+const char *spcmd1[] = {"st", "-n", "spterm", "-g", "120x34", NULL };
+const char *spcmd2[] = {"st", "-n", "spbc", "-g", "50x20", "-f", "monospace:size=14", "-e", "bc", "-q", NULL };
+
+static Sp scratchpads[] = {
+	/* name      cmd */
+	{ "spterm",  spcmd1 },
+	{ "spbc",    spcmd2 },
+};
+
 static const Rule rules[] = {
 	/* xprop(1):
 	 *	WM_CLASS(STRING) = instance, class
@@ -44,6 +59,8 @@ static const Rule rules[] = {
 	/* class      instance    title       tags mask     isfloating   monitor */
     { "mpv",      NULL,       NULL,       0,            1,           -1 },
     { "Firefox",  NULL,       NULL,       1 << 4,       0,           -1 },
+	{ NULL,		  "spterm",	  NULL,		  SPTAG(0),		1,			 -1 },
+	{ NULL,		  "spbc",	  NULL,		  SPTAG(1),		1,			 -1 },
 };
 
 /* layout(s) */
@@ -73,7 +90,7 @@ static Button buttons[] = {
     { ClkWinTitle,          0,              Button2,        zoom,           {0} },
 	{ ClkClientWin,         MODKEY,         Button1,        movemouse,      {0} },
 	{ ClkClientWin,         MODKEY,         Button2,        togglefloating, {0} },
-	{ ClkClientWin,         MODKEY,         Button3,        resizemouse,    {0} },
+	{ ClkClientWin,         MODKEY,         Button1,        resizemouse,    {0} },
 	{ ClkTagBar,            0,              Button1,        view,           {0} },
 	{ ClkTagBar,            0,              Button3,        toggleview,     {0} },
 	{ ClkTagBar,            MODKEY,         Button1,        tag,            {0} },
@@ -155,4 +172,5 @@ static Signal signals[] = {
 	{ "xrdb",           xrdb },
 	{ "togglefullscr",  togglefullscr },
 	{ "shiftview",      shiftview },
+	{ "togglescratch",  togglescratch },
 };
