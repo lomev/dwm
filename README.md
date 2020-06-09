@@ -1,6 +1,6 @@
 # Fork of dwm - dynamic window manager
 
-[dwm](https://dwm.suckless.org) with addiotional features that make it more usable and appealing for me.
+[dwm](https://dwm.suckless.org) with addiotional features that make it more usable and appealing to me.
 
 ## Patches and features
   
