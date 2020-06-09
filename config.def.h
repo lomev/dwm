@@ -2,7 +2,7 @@
 
 /* appearance */
 static const unsigned int borderpx  = 1;        /* border pixel of windows */
-static const unsigned int gappx     = 16;       /* gaps between windows */
+static const unsigned int gappx     = 8;       /* gaps between windows */
 static const unsigned int snap      = 8;        /* snap pixel */
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
@@ -26,11 +26,10 @@ static char normfgcolor[]     = "#bbbbbb";
 static char selbordercolor[]  = "#005577";
 static char selbgcolor[]      = "#005577";
 static char selfgcolor[]      = "#eeeeee";
-
 static char *colors[][3]      = {
-	/*                 fg           bg           border  */
-	[SchemeNorm]   = { normfgcolor, normbgcolor, normbordercolor },
-	[SchemeSel]    = { selfgcolor,  selbgcolor,  selbordercolor  },
+	/*                 fg               bg           border  */
+	[SchemeNorm]   = { normfgcolor,     normbgcolor, normbordercolor },
+	[SchemeSel]    = { selfgcolor,      selbgcolor,  selbordercolor  },
 };
 
 /* tagging */
@@ -41,10 +40,8 @@ typedef struct {
 	const char *name;
 	const void *cmd;
 } Sp;
-
 const char *spcmd1[] = {"st", "-n", "spterm", "-g", "120x34", NULL };
 const char *spcmd2[] = {"st", "-n", "spbc", "-g", "50x20", "-f", "monospace:size=14", "-e", "bc", "-q", NULL };
-
 static Sp scratchpads[] = {
 	/* name      cmd */
 	{ "spterm",  spcmd1 },
@@ -58,9 +55,9 @@ static const Rule rules[] = {
 	 */
 	/* class      instance    title       tags mask     isfloating   monitor */
     { "mpv",      NULL,       NULL,       0,            1,           -1 },
-    { "Firefox",  NULL,       NULL,       1 << 4,       0,           -1 },
-	{ NULL,		  "spterm",	  NULL,		  SPTAG(0),		1,			 -1 },
-	{ NULL,		  "spbc",	  NULL,		  SPTAG(1),		1,			 -1 },
+    { "Firefox",  NULL,       NULL,       1 << 8,       0,           -1 },
+    { NULL,		  "spterm",	  NULL,		  SPTAG(0),		1,			 -1 },
+    { NULL,		  "spbc",	  NULL,		  SPTAG(1),		1,			 -1 },
 };
 
 /* layout(s) */

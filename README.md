@@ -16,7 +16,14 @@
 - [xrdb](http://dwm.suckless.org/patches/xrdb)
 - [dwmc](http://dwm.suckless.org/patches/dwmc)
 - [bstack](http://dwm.suckless.org/patches/bottomstack)
+- [scratchpads](http://dwm.suckless.org/patches/scratchpads)
+- [decorhints](http://dwm.suckless.org/patches/decorhints)
+- [monocle symbol](http://dwm.suckless.org/patches/monocle_symbol)
+- shiftview
 - and a few my own changes to the source code and config file 
+
+- [hide_vacant_tags](http://dwm.suckless.org/patches/hide_vacant_tags)
+- [barabtags](http://dwm.suckless.org/patches/barabtags)
 
 ## Installation
 
