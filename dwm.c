@@ -889,8 +889,6 @@ void
 drawbar(Monitor *m)
 {
 	int x, w, sw = 0, stw = 0;
-    int boxs = drw->fonts->h / 9;
-   	int boxw = drw->fonts->h / 6 + 2;
 	unsigned int i, occ = 0, urg = 0;
 	Client *c;
 
@@ -926,10 +924,10 @@ drawbar(Monitor *m)
 	drw_setscheme(drw, scheme[SchemeNorm]);
 	x = drw_text(drw, x, 0, w, bh, lrpad / 2, m->ltsymbol, 0);
 
-	if ((w = m->ww - sw - stw - x) > bh) {
+ 	if ((w = m->ww - sw - stw - x) > bh) {
         drw_setscheme(drw, scheme[SchemeNorm]);
         drw_rect(drw, x, 0, w, bh, 1, 1);
-	}
+    }
 	drw_map(drw, m->barwin, 0, 0, m->ww - stw, bh);
 }
 
