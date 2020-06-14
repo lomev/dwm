@@ -68,11 +68,11 @@ static const int decorhints  = 1;    /* 1 means respect decoration hints */
 
 static const Layout layouts[] = {
 	/* symbol        arrange function */
-	{ "\ue002",      tile },    /* first entry is default */
-	{ "\ue006",      NULL },    /* no layout function means floating behavior */
-	{ "\ue000",      monocle },
-	{ "\ue003",      bstack },
-	{ "\ue26b",      deck },
+	{ " \ue002",      tile },    /* first entry is default */
+	{ " \ue006",      NULL },    /* no layout function means floating behavior */
+	{ " \ue000",      monocle },
+	{ " \ue003",      bstack },
+	{ " \ue26b",      deck },
 };
 
 /* key definitions */
