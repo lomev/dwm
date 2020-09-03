@@ -1,13 +1,13 @@
 /* See LICENSE f/le for copyright and license details. */
 
 /* appearance */
-static const unsigned int borderpx  = 2;        /* border pixel of windows */
+static const unsigned int borderpx  = 1;        /* border pixel of windows */
 static const unsigned int gappx     = 0;        /* gaps between windows */
 static const unsigned int snap      = 8;        /* snap pixel */
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
-static const int horizpadbar        = 3;        /* horizontal padding for statusbar */
-static const int vertpadbar         = 2;        /* vertical padding for statusbar */
+static const int horizpadbar        = 2;        /* horizontal padding for statusbar */
+static const int vertpadbar         = 4;        /* vertical padding for statusbar */
 static const int showsystray        = 1;        /* 0 means no systray */
 
 /* systray settings */
@@ -16,7 +16,7 @@ static const unsigned int systrayspacing = 2;   /* systray spacing */
 static const int systraypinningfailfirst = 1;   /* 1: if pinning fails, display systray on the first monitor, False: display systray on the last monitor*/
 
 /* fonts */
-static const char *fonts[] = { "monospace:size=9",
+static const char *fonts[] = { "monospace:size=10",
                                "Siji" };
 
 /* default colorscheme */
@@ -27,9 +27,10 @@ static char selbordercolor[]  = "#005577";
 static char selbgcolor[]      = "#005577";
 static char selfgcolor[]      = "#eeeeee";
 static char *colors[][3]      = {
-	/*                 fg               bg           border  */
-	[SchemeNorm]   = { normfgcolor,     normbgcolor, normbordercolor },
-	[SchemeSel]    = { selfgcolor,      selbgcolor,  selbordercolor  },
+	/*               fg           bg           border  */
+	[SchemeNorm] = { normfgcolor, normbgcolor, normbordercolor },
+	[SchemeSel]  = { selfgcolor,  selbgcolor,  selbordercolor  },
+	[SchemeHid]  = { selbgcolor,  normbgcolor, selbgcolor  },
 };
 
 /* tagging */
@@ -54,8 +55,8 @@ static const Rule rules[] = {
 	 *	WM_NAME(STRING) = title
 	 */
 	/* class      instance    title       tags mask     isfloating   monitor */
-    { "mpv",      NULL,       NULL,       0,            1,           -1 },
-    { "Firefox",  NULL,       NULL,       1 << 8,       0,           -1 },
+    { "mpv",      NULL,       NULL,       0,            0,           -1 },
+    { "Firefox",  NULL,       NULL,       1 << 2,       0,           -1 },
     { NULL,		  "spterm",	  NULL,		  SPTAG(0),		1,			 -1 },
     { NULL,		  "spbc",	  NULL,		  SPTAG(1),		1,			 -1 },
 };
@@ -63,16 +64,16 @@ static const Rule rules[] = {
 /* layout(s) */
 static const float mfact     = 0.55; /* factor of master area size [0.05..0.95] */
 static const int nmaster     = 1;    /* number of clients in master area */
-static const int resizehints = 1;    /* 1 means respect size hints in tiled resizals */
+static const int resizehints = 0;    /* 1 means respect size hints in tiled resizals */
 static const int decorhints  = 1;    /* 1 means respect decoration hints */
 
 static const Layout layouts[] = {
-	/* symbol        arrange function */
-	{ " \ue002",      tile },    /* first entry is default */
-	{ " \ue006",      NULL },    /* no layout function means floating behavior */
-	{ " \ue000",      monocle },
-	{ " \ue003",      bstack },
-	{ " \ue26b",      deck },
+	/* symbol    arrange function */
+	{ "[T]",     tile },    /* first entry is default */
+	{ "[F]",     NULL },    /* no layout function means floating behavior */
+	{ "[M]",     monocle },
+	{ "[B]",     bstack },
+	{ "[D]",     deck },
 };
 
 /* key definitions */
@@ -84,6 +85,7 @@ static Button buttons[] = {
 	/* click                event mask      button          function        argument */
 	{ ClkLtSymbol,          0,              Button1,        setlayout,      {0} },
 	{ ClkLtSymbol,          0,              Button3,        setlayout,      {.v = &layouts[2]} },
+	{ ClkWinTitle,          0,              Button1,        togglewin,      {0} },
     { ClkWinTitle,          0,              Button2,        zoom,           {0} },
 	{ ClkClientWin,         MODKEY,         Button1,        movemouse,      {0} },
 	{ ClkClientWin,         MODKEY,         Button2,        togglefloating, {0} },
