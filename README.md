@@ -5,5 +5,5 @@
 ## Patches and features
   
 - features: pertag, fullscreen, gaps, systray, transfer, push, scratchpads, shiftview, dwmc
-- custom build: monocle symbol, hide vacant tags, decorhints, statuspadding, awesomebar
+- custom build: monocle symbol, hide vacant tags, decorhints, statuspadding, awesomebar, underline
 - layouts: deck
