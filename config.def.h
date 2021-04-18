@@ -1,14 +1,14 @@
 /* See LICENSE f/le for copyright and license details. */
 
 /* appearance */
-static const unsigned int borderpx  = 1;        /* border pixel of windows */
-static const unsigned int gappx     = 0;        /* gaps between windows */
+static const unsigned int borderpx  = 2;        /* border pixel of windows */
+static const unsigned int gappx     = 2;        /* gaps between windows */
 static const unsigned int snap      = 8;        /* snap pixel */
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
 static const int horizpadbar        = 2;        /* horizontal padding for statusbar */
-static const int vertpadbar         = 4;        /* vertical padding for statusbar */
-static const int showsystray        = 1;        /* 0 means no systray */
+static const int vertpadbar         = 2;        /* vertical padding for statusbar */
+static const int showsystray        = 0;        /* 0 means no systray */
 
 /* systray settings */
 static const unsigned int systraypinning = 0;   /* 0: sloppy systray follows selected monitor, >0: pin systray to monitor X */
@@ -41,12 +41,12 @@ typedef struct {
 	const char *name;
 	const void *cmd;
 } Sp;
+
 const char *spcmd1[] = {"st", "-n", "spterm", "-g", "120x34", NULL };
-const char *spcmd2[] = {"st", "-n", "spbc", "-g", "50x20", "-f", "monospace:size=14", "-e", "bc", "-q", NULL };
+
 static Sp scratchpads[] = {
 	/* name      cmd */
 	{ "spterm",  spcmd1 },
-	{ "spbc",    spcmd2 },
 };
 
 static const Rule rules[] = {
@@ -54,11 +54,11 @@ static const Rule rules[] = {
 	 *	WM_CLASS(STRING) = instance, class
 	 *	WM_NAME(STRING) = title
 	 */
-	/* class      instance    title       tags mask     isfloating   monitor */
-    { "mpv",      NULL,       NULL,       0,            0,           -1 },
-    { "Firefox",  NULL,       NULL,       1 << 2,       0,           -1 },
-    { NULL,		  "spterm",	  NULL,		  SPTAG(0),		1,			 -1 },
-    { NULL,		  "spbc",	  NULL,		  SPTAG(1),		1,			 -1 },
+	/* class       instance    title       tags mask     isfloating   monitor */
+    { "mpv",       NULL,       NULL,       0,            1,           -1 },
+    { "LibreWolf", NULL,       NULL,       1 << 8,       0,           -1 },
+    { "Chromium",  NULL,       NULL,       1 << 8,       0,           -1 },
+    { NULL,		   "spterm",   NULL,	   SPTAG(0),	 1,		 	  -1 },
 };
 
 /* layout(s) */
@@ -69,11 +69,10 @@ static const int decorhints  = 1;    /* 1 means respect decoration hints */
 
 static const Layout layouts[] = {
 	/* symbol    arrange function */
-	{ "[T]",     tile },    /* first entry is default */
+	{ "[T]",     tile },    /* slave clients arranged on the left */
 	{ "[F]",     NULL },    /* no layout function means floating behavior */
-	{ "[M]",     monocle },
-	{ "[B]",     bstack },
-	{ "[D]",     deck },
+	{ "[M]",     monocle }, /* one client per monitor */
+	{ "[D]",     deck },    /* slave clients arranged in deck */
 };
 
 /* key definitions */

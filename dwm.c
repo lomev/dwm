@@ -316,7 +316,6 @@ static int xerrordummy(Display *dpy, XErrorEvent *ee);
 static int xerrorstart(Display *dpy, XErrorEvent *ee);
 static void xrdb(const Arg *arg);
 static void zoom(const Arg *arg);
-static void bstack(Monitor *m);
 static void shiftview(const Arg *arg);
 
 /* variables */
@@ -2957,38 +2956,6 @@ transfer(const Arg *arg) {
 		}
 	}
 	arrange(selmon);
-}
-
-void
-bstack(Monitor *m) {
-	int w, h, mh, mx, tx, ty, tw;
-	unsigned int i, n;
-	Client *c;
-
-	for (n = 0, c = nexttiled(m->clients); c; c = nexttiled(c->next), n++);
-	if (n == 0)
-		return;
-	if (n > m->nmaster) {
-		mh = m->nmaster ? m->mfact * m->wh : 0;
-		tw = m->ww / (n - m->nmaster);
-		ty = m->wy + mh;
-	} else {
-		mh = m->wh - m->gappx;
-		tw = m->ww;
-		ty = m->wy;
-	}
-	for (i = mx = 0, tx = m->wx, c = nexttiled(m->clients); c; c = nexttiled(c->next), i++) {
-		if (i < m->nmaster) {
-			w = (m->ww - mx) / (MIN(n, m->nmaster) - i);
-			resize(c, m->wx + mx + m->gappx, m->wy + m->gappx, w - (2 * c->bw) - 2 * m->gappx, mh - (2 * c->bw) - m->gappx, 0);
-			mx += WIDTH(c) + m->gappx;
-		} else {
-			h = m->wh - mh;
-			resize(c, tx + m->gappx, ty + m->gappx, tw - (2 * c->bw) - 2 * m->gappx, h - (2 * c->bw) - 2 * m->gappx, 0);
-			if (tw != m->ww)
-				tx += WIDTH(c) + m->gappx;
-		}
-	}
 }
 
 void
