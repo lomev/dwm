@@ -1,14 +1,14 @@
 /* See LICENSE f/le for copyright and license details. */
 
 /* appearance */
-static const unsigned int borderpx  = 2;        /* border pixel of windows */
-static const unsigned int gappx     = 2;        /* gaps between windows */
+static const unsigned int borderpx  = 1;        /* border pixel of windows */
+static const unsigned int gappx     = 16;        /* gaps between windows */
 static const unsigned int snap      = 8;        /* snap pixel */
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
 static const int horizpadbar        = 2;        /* horizontal padding for statusbar */
-static const int vertpadbar         = 2;        /* vertical padding for statusbar */
-static const int showsystray        = 0;        /* 0 means no systray */
+static const int vertpadbar         = 4;        /* vertical padding for statusbar */
+static const int showsystray        = 1;        /* 0 means no systray */
 
 /* systray settings */
 static const unsigned int systraypinning = 0;   /* 0: sloppy systray follows selected monitor, >0: pin systray to monitor X */
@@ -49,10 +49,14 @@ static Sp scratchpads[] = {
 	{ "spterm",  spcmd1 },
 };
 
-static const unsigned int ulinepad	= 0;	/* horizontal padding between the underline and tag */
-static const unsigned int ulinestroke	= 1;	/* thickness / height of the underline */
-static const unsigned int ulinevoffset	= 0;	/* how far above the bottom of the bar the line should appear */
-static const int ulineall 		= 0;	/* 1 to show underline on all tags, 0 for just the active ones */
+static const unsigned int ulinepad	   = 0;	/* horizontal padding between the underline and tag */
+static const unsigned int ulinestroke  = 1;	/* thickness / height of the underline */
+static const unsigned int ulinevoffset = 0;	/* how far above the bottom of the bar the line should appear */
+static const int ulineall 		       = 0;	/* 1 to show underline on all tags, 0 for just the active ones */
+
+static const char ptagf[] = "[%s: %s]";	/* format of a tag label */
+static const char etagf[] = "[%s]";	    /* format of an empty tag */
+static const int lcaselbl = 1;		    /* 1 means make tag label lowercase */	
 
 static const Rule rules[] = {
 	/* xprop(1):
@@ -74,10 +78,10 @@ static const int decorhints  = 1;    /* 1 means respect decoration hints */
 
 static const Layout layouts[] = {
 	/* symbol    arrange function */
-	{ "[T]",     tile },    /* slave clients arranged on the left */
-	{ "[F]",     NULL },    /* no layout function means floating behavior */
-	{ "[M]",     monocle }, /* one client per monitor */
-	{ "[D]",     deck },    /* slave clients arranged in deck */
+	{ "\ue002",  tile },    /* slave clients arranged on the left */
+	{ "\ue006",  NULL },    /* no layout function means floating behavior */
+	{ "\ue000",  monocle }, /* one client per monitor */
+	{ "\ue006",  deck },    /* slave clients arranged in deck */
 };
 
 /* key definitions */
